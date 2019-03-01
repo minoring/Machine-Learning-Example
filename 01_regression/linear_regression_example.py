@@ -36,11 +36,10 @@ print(model.intercept_)
 #%%
 # Holdout cross validation. 
 # 75% trainning data, 25% validation data.
-X_train, X_test, y_train, y_test =  
-        train_test_split(boston.data, 
-                        boston.target, 
-                        test_size = 0.25, 
-                        random_state = 100)
+X_train, X_test, y_train, y_test = train_test_split(boston.data, 
+                                                    boston.target, 
+                                                    test_size = 0.25, 
+                                                    random_state = 100)
 
 # Calculate parameters by trainning data.
 model.fit(X_train, y_train)
@@ -50,29 +49,27 @@ y_train_pred = model.predict(X_train)
 y_test_pred = model.predict(X_test)
 
 #%%
-# 학습용, 검증용 각각에서 잔차를 플롯
-plt.scatter(y_train_pred, y_train_pred - y_train, c = 'gray', marker = 'o', label = 'Train Data')
-plt.scatter(y_test_pred, y_test_pred - y_test, c = 'blue', marker = 's', label = 'Test Data')
+# Plot residuals.
+plt.scatter(y_train_pred, y_train_pred - y_train, 
+            c = 'gray', marker = 'o', label = 'Train Data')
+plt.scatter(y_test_pred, y_test_pred - y_test, 
+            c = 'blue', marker = 's', label = 'Test Data')
 plt.xlabel('Predicted Values')
 plt.ylabel('Residuals')
-
-# 범례를 왼쪽 위에 표시
 plt.legend(loc = 'upper left')
 
-# y = 0의 직선을 그림
+# Plot y = 0 line. 
 plt.hlines(y = 0, xmin = -10, xmax = 50, lw = 2, color = 'black')
 plt.xlim([0, 50])
 plt.show()
 
-
 #%%
-# 학습용, 검증용 데이터에 대하여 평균제곱오차를 출력
-print('MSE Train : %.3f, Test : %.3f' % (mean_squared_error(y_train, y_train_pred), mean_squared_error(y_test, y_test_pred)))
+# MSE
+print('MSE Train : %.3f, Test : %.3f' % (
+        mean_squared_error(y_train, y_train_pred), 
+        mean_squared_error(y_test, y_test_pred)))
 
-# 학습용, 검증용 데이터에 대하여 R^2를 출력
-print('R^2 Train : %.3f, Test : %.3f' % (model.score(X_train, y_train), model.score(X_test, y_test)))
-
-#%% [markdown]
-# ## 참고 자료
-# - http://tekenuko.hatenablog.com/entry/2016/09/19/151547
-
+# Coefficient of determination. R^2
+print('R^2 Train : %.3f, Test : %.3f' % (
+        model.score(X_train, y_train), 
+        model.score(X_test, y_test)))
