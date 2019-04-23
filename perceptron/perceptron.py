@@ -1,3 +1,5 @@
+# https://m.blog.naver.com/PostView.nhn?blogId=samsjang&logNo=220951769938&proxyReferer=https%3A%2F%2Fwww.google.com%2F
+
 import numpy as np
 
 class Perceptron():
