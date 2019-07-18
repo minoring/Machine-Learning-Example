@@ -30,4 +30,3 @@ def sub_cost(a, b):
 
 if __name__ == "__main__":
     print(min_edit_dist("intention", "execution"))
-    # print(min_edit_dist("hi", ""))
