@@ -1,6 +1,7 @@
 """Implementation of Linear Regression
 
-Refer to: https://github.com/eriklindernoren/ML-From-Scratch/blob/master/mlfromscratch/examples/linear_regression.py"""
+Refer to: https://github.com/eriklindernoren/ML-From-Scratch/blob/master/mlfromscratch/examples/linear_regression.py
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_regression
